@@ -1,0 +1,17 @@
+int MPI_Initialized (int *flag): Verifica se MPI_Init foi chamada e armazena o resultado em &flag
+    
+int MPI_Finalized (int *flag): Verifica se MPI_Finalize foi chamada e armazena o resultado em &flag
+    
+int MPI_Comm_Rank(MPI_Comm com, int *rank): Verifica o ranque do processo atual no comunicador "com" e armazena o resultado em &rank
+    
+int MPI_Comm_size(MPI_Comm com, int *num): Verifica a quantidade de processos no comunicador "com" e armazena o resultado em &num
+    
+int MPI_Abort(MPI_Comm com, int erro): Aborta o programa
+    
+double MPI_Wtime(): Retorna um valor representando os segundos desde um ponto fixo no passado (instante)
+    
+double MPI_Wtick(): Retorna a resolução em segundos da função MPI_Wtime()
+
+int MPI_Send(void* mensagem, int cont, MPI_Datatype tipo_mpi, int destino, int etiq, MPI_Comm com): Envia uma mensagem para outro processo do mesmo comunicador. "tipo_mpi" refere-se ao tipo da mensagem enviada, "destino" ao ranque do processo alvo e "etiq" ao assunto da mensagem. [BLOQUEANTE]
+
+int MPI_Recv(void* mensagem, int cont, MPI_Datatype tipo_mpi, int origem, int etiq, MPI_Comm com, MPI_Status* estado): Recebe uma mensagem de outro processo do mesmo comunicador. "estado" refere-se a uma estrutura com três campos: MPI_SOURCE, MPI_TAG, MPI_ERROR. [BLOQUEANTE]
